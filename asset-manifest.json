@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.a102879e.css",
-    "main.js": "/static/js/main.3f1806c3.js",
-    "static/js/787.8083358d.chunk.js": "/static/js/787.8083358d.chunk.js",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/index.html",
-    "main.a102879e.css.map": "/static/css/main.a102879e.css.map",
-    "main.3f1806c3.js.map": "/static/js/main.3f1806c3.js.map",
-    "787.8083358d.chunk.js.map": "/static/js/787.8083358d.chunk.js.map"
+    "main.css": "/StudentApartment/static/css/main.a102879e.css",
+    "main.js": "/StudentApartment/static/js/main.2d80cf3d.js",
+    "static/js/787.8083358d.chunk.js": "/StudentApartment/static/js/787.8083358d.chunk.js",
+    "static/media/logo.svg": "/StudentApartment/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/StudentApartment/index.html",
+    "main.a102879e.css.map": "/StudentApartment/static/css/main.a102879e.css.map",
+    "main.2d80cf3d.js.map": "/StudentApartment/static/js/main.2d80cf3d.js.map",
+    "787.8083358d.chunk.js.map": "/StudentApartment/static/js/787.8083358d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a102879e.css",
-    "static/js/main.3f1806c3.js"
+    "static/js/main.2d80cf3d.js"
   ]
 }
