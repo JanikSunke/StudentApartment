@@ -1,22 +1,32 @@
-import { faBuilding, faBuildingUser, faDoorClosed, faHome, faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faBuilding, faBuildingUser, faDoorClosed, faHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Col, Container, Image, Row, Stack } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useNavigate } from 'react-router-dom';
 
-export default function () {
+export default function Home() {
+    const navigate = useNavigate();
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        const searchValue = event.target.search.value
+        navigate({ pathname: '/StudentApartment/propertiesForRent/' + searchValue})
+    }
 
     return (
         <Container>
             <h1>Ready to find your perfect apartment?</h1>
+            <Form onSubmit={handleSearch}>
             <InputGroup className="mb-3">
-                <InputGroup.Text id="basic-addon1"></InputGroup.Text>
+                <InputGroup.Text id="basic-addon1">Search</InputGroup.Text>
                 <Form.Control
-                placeholder="Search"
                 aria-label="Search"
                 aria-describedby="basic-addon1"
+                name="search"
                 />
             </InputGroup>
+            </Form>
             <Row>
                 <Col>
                     <Image fluid  src='copenhagen.jpg' />

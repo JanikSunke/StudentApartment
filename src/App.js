@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import  Home  from "./components/Home";
-import ListProperty  from "./components/ListProperty";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from "./components/Home";
+import ListProperty from "./components/ListProperty";
 import TopNavbar from './components/TopNavbar';
 import CreateAccount from './components/CreateAccount';
 import LogIn from './components/LogIn';
-import StateProvider, { StateContext } from './StateProvider';
+import StateProvider from './StateProvider';
+import MyProfile from './components/MyProfile';
+import SearchProperty from './components/SearchProperty';
 
 
 
@@ -15,13 +16,17 @@ function App() {
   return (
     <div className="App">
       <StateProvider>
-        <TopNavbar />
-        <LogIn />
         <BrowserRouter>
+          <TopNavbar />
+          <LogIn />
+          <CreateAccount />
           <Routes>
-            <Route index element={<Home />} />
-            <Route path="/listProperty" element={<ListProperty />} />
-            <Route path="/createAccount" element={<CreateAccount />} />
+            <Route path='/StudentApartment' element={<Home />} />
+            <Route path="/StudentApartment/listProperty" element={<ListProperty />} />
+            <Route path="/StudentApartment/createAccount" element={<CreateAccount />} />
+            <Route path="/StudentApartment/propertiesForRent" element={<SearchProperty />} />
+            <Route path="/StudentApartment/propertiesForRent/:value" element={<SearchProperty />} />
+            <Route path="/StudentApartment/myProfile" element={<MyProfile />} />
           </Routes>
         </BrowserRouter>
       </StateProvider>
