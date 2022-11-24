@@ -11,9 +11,9 @@ export default function TopNavbar() {
   const [modal, setModal] = useContext(StateContext);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" style={{backgroundColor: "#f4f3c1"}}>
       <Container>
-        <Navbar.Brand href=""><FontAwesomeIcon icon={faBuilding} /> Student Apartments</Navbar.Brand>
+        <Navbar.Brand href=""><FontAwesomeIcon icon={faBuilding} style={{color: "#f4c51e"}}/> Student Apartments</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">
