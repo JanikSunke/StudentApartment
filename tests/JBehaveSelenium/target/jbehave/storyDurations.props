@@ -1,0 +1,7 @@
+#org.jbehave.core.embedder.StoryManager
+#Wed Nov 23 16:57:11 CET 2022
+total=4000
+stories/sample.story=3000
+stories/studentapartment.story=1000
+threadAverage=4000
+threads=1
