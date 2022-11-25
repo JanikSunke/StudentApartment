@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form, DropdownButton, Dropdown, Stack, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Stack, Row, Col, Button } from "react-bootstrap";
 
 
 export default function ListProperty() {
@@ -12,11 +12,11 @@ export default function ListProperty() {
         setSubmit(true)
         const form = document.getElementById('form');
         setData(data => [...data, 'Address' + form.elements['address'].value])
-        setData(data => [...data, 'Category' + form.elements['category'].value])
-        if (form.elements['file'].value != "") setData(data => [...data, 'file' + form.elements['file'].value])
-        setData(data => [...data, 'Rooms' + form.elements['rooms'].value])
-        setData(data => [...data, 'Size' + form.elements['size'].value])
-        setData(data => [...data, 'Dent' + form.elements['rent'].value])
+        setData(data => [...data, 'Category: ' + form.elements['category'].value])
+        if (form.elements['file'].value !== "") setData(data => [...data, 'file' + form.elements['file'].value])
+        setData(data => [...data, 'Rooms: ' + form.elements['rooms'].value])
+        setData(data => [...data, 'Size: ' + form.elements['size'].value])
+        setData(data => [...data, 'Rent: ' + form.elements['rent'].value])
         setData(data => [...data, 'Deposit' + form.elements['deposit'].value])
         setData(data => [...data, 'Period' + form.elements['period'].value])
         setData(data => [...data, 'Price' + form.elements['price'].value])
@@ -28,8 +28,8 @@ export default function ListProperty() {
         if (form.elements['parking'].checked) setData(data => [...data, 'parking'])
         if (form.elements['message'].checked) setData(data => [...data, 'message'])
         if (form.elements['phone'].checked) setData(data => [...data, 'phone'])
-        setData(data => [...data, 'title' + form.elements['title'].value])
-        setData(data => [...data, 'title' + form.elements['text'].value])
+        setData(data => [...data, 'Title: ' + form.elements['title'].value])
+        setData(data => [...data, 'Description: ' + form.elements['text'].value])
     }
     console.log(data)
     return (

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Home() {
     const navigate = useNavigate();
@@ -29,12 +29,16 @@ export default function Home() {
             </Form>
             <Row>
                 <Col>
-                    <Image fluid  src='copenhagen.jpg' />
-                    <p>Copenhagen</p>
+                    <Link to="/StudentApartment/propertiesForRent/københavn" className='text-black m-2' style={{ textDecoration: 'none' }}>
+                        <Image fluid src='copenhagen.jpg' />
+                        <p>Copenhagen</p>
+                    </Link>
                 </Col>
                 <Col>
-                    <Image fluid  src='odense.jpg' />
-                    <p>Odense</p>
+                <Link to="/StudentApartment/propertiesForRent/odense" className='text-black m-2' style={{ textDecoration: 'none' }}>
+                        <Image fluid src='odense.jpg' />
+                        <p>Odense</p>
+                    </Link>
                 </Col>
                 <Col>
                     <Image fluid src='aarhus.jpg' />
@@ -43,20 +47,28 @@ export default function Home() {
             </Row>
             <h2>Categories</h2>
                 <Button variant="light" className='m-2'>
+                    <Link className='text-dark m-2' style={{ textDecoration: 'none' }} to="/StudentApartment/propertiesForRent">
                     <FontAwesomeIcon icon={faBuilding}></FontAwesomeIcon>
                     Apartments
+                    </Link>
                 </Button>
                 <Button variant="light" className='m-2'>
+                    <Link className='text-dark m-2' style={{ textDecoration: 'none' }} to="/StudentApartment/propertiesForRent">
                     <FontAwesomeIcon icon={faDoorClosed}></FontAwesomeIcon>
                     Rooms
+                    </Link>
                 </Button>
                 <Button variant="light" className='m-2'>
+                    <Link className='text-dark m-2' style={{ textDecoration: 'none' }} to="/StudentApartment/propertiesForRent">
                     <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon>
                     Houses
+                    </Link>
                 </Button>
                 <Button variant="light" className='m-2'>
+                    <Link className='text-dark m-2' style={{ textDecoration: 'none' }} to="/StudentApartment/propertiesForRent">
                     <FontAwesomeIcon icon={faBuildingUser}></FontAwesomeIcon>
                     All Properties
+                    </Link>
                 </Button>
         </Container>
     )

@@ -41,7 +41,7 @@ export default function CreateAccount() {
                     label={'I agree to terms of use'}
                     id="terms"
                 />
-                <p>You must accept the <a href="">Terms and conditions</a></p>
+                <p>You must accept the <a href="/">Terms and conditions</a></p>
                 <Button onClick={submitHandler} className="m-r-2">Sign up</Button>
                 Already have an account?
                 <Button onClick={() => setModal({ createAccount: false, logIn: true })} variant="link">Log in here</Button>
