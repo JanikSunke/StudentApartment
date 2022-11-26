@@ -17,15 +17,11 @@ export default function MessagePage() {
                 </Col>
                 <Col>
                 <h1><FontAwesomeIcon className='mx-2' icon={faUserAlt}/></h1>
-                <input style={{float: "left"}} type="textarea" readOnly value={"Is Nørrevej Available?"} ></input>
+                <input style={{float: "right"}} type="textarea" readOnly value={"Is Nørrevej Available?"} ></input>
                 <br></br>
                 <br></br>
                 <br></br>
-                <input style={{float: "right"}} type="textarea" readOnly value={"Yes"} ></input>
-                <br></br>
-                <br></br>
-                <br></br>
-                <input style={{float: "left"}} type="textarea" readOnly value={"When can i move in?"} ></input>
+                <input style={{float: "left"}} type="textarea" readOnly value={"Yes"} ></input>
                 <br></br>
                 <br></br>
                 <br></br>

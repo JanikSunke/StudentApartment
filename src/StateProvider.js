@@ -7,7 +7,10 @@ export default function ListProvider(props) {
     const [modal, setModal] = useState({
         logIn: false,
         createAccount: false,
-        loggedIn: false,
+        loggedIn: false, 
+        adminLoggedIn: false,
+        email: "jens@gmail.com",
+        password: "jens123"
     });
 
     return (

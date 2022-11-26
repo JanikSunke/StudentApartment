@@ -7,8 +7,10 @@ export default function LogIn() {
     const [modal, setModal] = useContext(StateContext);
 
     const logInHandler = (event) => {
-        if (document.getElementById('email').value !== "" && document.getElementById('password').value !== "") {
-            setModal({ logIn: false, loggedIn: true })
+        if (document.getElementById('email').value === "admin" && document.getElementById('password').value === "admin") {
+            setModal({...modal, logIn: false, adminLoggedIn: true })
+        } else if (document.getElementById('email').value === modal.email && document.getElementById('password').value === modal.password) {
+            setModal({...modal, logIn: false, loggedIn: true })
         }
     }
 
@@ -32,7 +34,7 @@ export default function LogIn() {
                     />
                 </InputGroup>
                 <Button onClick={logInHandler} >Log In</Button>
-                <Button onClick={() => setModal({ createAccount: true, logIn: false })} variant="link">Forgot Password?</Button>
+                <Button onClick={() => setModal({...modal, createAccount: true, logIn: false })} variant="link">Forgot Password?</Button>
             </Modal.Body>
         </Modal>
     )

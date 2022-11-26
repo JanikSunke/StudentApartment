@@ -8,7 +8,7 @@ export default function SearchProperty() {
     const [searchCopenhagen, setSearchCopenhagen] = useState(false);
 
     useEffect(() => {
-        if (value != undefined) {
+        if (value !== undefined) {
             if (value === "") {
                 setSearchOdense(true)
                 setSearchCopenhagen(true)
@@ -85,7 +85,7 @@ export default function SearchProperty() {
                 </Col>
                 <Col>
                     <h1>Properties for rent</h1>
-                    <p><Link to="/">Home</Link> > Properties for rent</p>
+                    <p><Link to="/">Home</Link> - Properties for rent</p>
                     <ButtonGroup>
                         <Button variant="outline-secondary" >Copenhagen</Button>
                         <Button variant="outline-secondary" >Aarhus</Button>

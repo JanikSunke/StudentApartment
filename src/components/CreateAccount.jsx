@@ -7,7 +7,7 @@ export default function CreateAccount() {
     const [modal, setModal] = useContext(StateContext);
     const submitHandler = () => {
         if (document.getElementById('fullname').value !== "" && document.getElementById('createEmail').value !== "" && document.getElementById('createPassword').value !== "" && document.getElementById('terms').value !== false && document.getElementById('createPassword').value.length >= 8) {
-            setModal({ createAccount: false, logIn: false, loggedIn: true })
+            setModal({...modal, createAccount: false, logIn: false, email: document.getElementById('createEmail').value, password: document.getElementById('createPassword').value})
         }
     }
     return (
