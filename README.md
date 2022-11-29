@@ -5,6 +5,8 @@ Course: https://odin.sdu.dk/sitecore/index.php?a=searchfagbesk&bbcourseid=T51005
 
 The website is hosted here: https://janiksunke.github.io/StudentApartment/
 
+Video of automated tests: https://www.youtube.com/watch?v=cBu-u2vbvhY&feature=youtu.be
+
 ## Scripts
 
 Run the front-end: `npm start`
