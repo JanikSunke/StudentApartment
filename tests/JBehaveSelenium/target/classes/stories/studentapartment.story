@@ -1,9 +1,9 @@
 Student Apartments story
 
 Narrative:
-As a web user
-I want to do a search
-In order to find a webpage
+As a student
+I want to find an apartment
+In order to have a place to live when I study
 
 Scenario: Site can load and menu bar is shown
 Given the student apartments site is displayed in the browser
