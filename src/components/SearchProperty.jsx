@@ -47,6 +47,7 @@ export default function SearchProperty() {
                         defaultValue={value}
                         className="mt-5 mx-5"
                         onChange={searchHandler}
+                        id="searchForProperties"
                     />
                     <Row>
                         <Col >
@@ -83,7 +84,7 @@ export default function SearchProperty() {
                         </Col>
                     </Row>
                 </Col>
-                <Col>
+                <Col id="propertiesContainer">
                     <h1>Properties for rent</h1>
                     <p><Link to="/">Home</Link> - Properties for rent</p>
                     <ButtonGroup>

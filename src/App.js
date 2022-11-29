@@ -8,6 +8,7 @@ import LogIn from './components/LogIn';
 import StateProvider from './StateProvider';
 import MyProfile from './components/MyProfile';
 import SearchProperty from './components/SearchProperty';
+import ResetPassword from './components/ResetPassword';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <TopNavbar />
           <LogIn />
           <CreateAccount />
+          <ResetPassword />
           <Routes>
             <Route path='/StudentApartment' element={<Home />} />
             <Route path="/StudentApartment/listProperty" element={<ListProperty />} />

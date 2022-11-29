@@ -111,9 +111,9 @@ export default function ListProperty() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Description*</Form.Label>
-                            <Form.Control type="textarea" placeholder="" style={{ height: '200px' }} name="text"/>
+                            <Form.Control type="textarea" placeholder="" id="descriptionField" style={{ height: '200px' }} name="text"/>
                         </Form.Group>
-                        <Button type="submit" onClick={submitHandler}>Submit</Button>
+                        <Button id="listApartmentSubmit" type="submit" onClick={submitHandler}>Submit</Button>
                     </Col>
                 </Row>
             </Form>}

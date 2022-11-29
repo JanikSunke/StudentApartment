@@ -9,6 +9,88 @@
 <div class="step successful">When I wait for the page to load</div>
 <div class="step successful">Then the content <span class="step parameter">Student Apartments</span> is displayed</div>
 </div>
+<div class="scenario">
+<h2>Scenario: Login using existing user</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">jens123</span></div>
+<div class="step successful">Then the content <span class="step parameter">My Profile</span> is displayed inside <span class="step parameter">.navbar</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: Create account and use it to login</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">palle@gmail.com</span> and <span class="step parameter">verysecurepassword</span></div>
+<div class="step successful">Then the content <span class="step parameter">Wrong username or password</span> is displayed inside <span class="step parameter">.modal-body</span></div>
+<div class="step successful">And the content <span class="step parameter">My Profile</span> is not displayed inside <span class="step parameter">.navbar</span></div>
+<div class="step successful">When I close the modal</div>
+<div class="step successful">And I create a new account named <span class="step parameter">Palle</span> with the credentials <span class="step parameter">palle@gmail.com</span> and <span class="step parameter">verysecurepassword</span></div>
+<div class="step successful">And I try logging in using <span class="step parameter">palle@gmail.com</span> and <span class="step parameter">verysecurepassword</span></div>
+<div class="step successful">Then the content <span class="step parameter">My Profile</span> is displayed inside <span class="step parameter">.navbar</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: List property using visible as admin</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">jens123</span></div>
+<div class="step successful">Then the content <span class="step parameter">List your property</span> is not displayed inside <span class="step parameter">.navbar</span></div>
+<div class="step successful">When I click <span class="step parameter">#logoutBtn</span></div>
+<div class="step successful">When I try logging in using <span class="step parameter">admin</span> and <span class="step parameter">admin</span></div>
+<div class="step successful">Then the content <span class="step parameter">List your property</span> is displayed inside <span class="step parameter">.navbar</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: List property as admin</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">And the admin is logged in</div>
+<div class="step successful">When I click <span class="step parameter">#listPropertyBtn</span></div>
+<div class="step successful">And I wait for the <span class="step parameter">#address</span> element to be visible</div>
+<div class="step successful">And I type <span class="step parameter">Landmandsgade 29</span> in <span class="step parameter">#address</span></div>
+<div class="step successful">And I type <span class="step parameter">Very nice apartment</span> in <span class="step parameter">#descriptionField</span></div>
+<div class="step successful">And I click <span class="step parameter">#listApartmentSubmit</span></div>
+<div class="step successful">Then the content <span class="step parameter">Landmandsgade 29</span> is displayed</div>
+<div class="step successful">And the content <span class="step parameter">Very nice apartment</span> is displayed</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Remove apartment from favorites</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">jens123</span></div>
+<div class="step successful">And I click <span class="step parameter">#myProfileBtn</span></div>
+<div class="step successful">And I click <span class="step parameter">#profileFavoritesBtn</span></div>
+<div class="step successful">Then the content <span class="step parameter">N&oslash;rregade</span> is displayed</div>
+<div class="step successful">When I click <span class="step parameter">.deleteFavoriteApartmentBtn</span></div>
+<div class="step successful">Then the content <span class="step parameter">N&oslash;rregade</span> is not displayed</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Sign contract</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">jens123</span></div>
+<div class="step successful">And I click <span class="step parameter">#myProfileBtn</span></div>
+<div class="step successful">And I click <span class="step parameter">#profileContractsBtn</span></div>
+<div class="step successful">And I sign the shown contract</div>
+<div class="step successful">Then the content <span class="step parameter">You have accepted N&oslash;rrevej 16</span> is displayed</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Reset password</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">wrongPassword</span></div>
+<div class="step successful">Then the content <span class="step parameter">Wrong username or password</span> is displayed inside <span class="step parameter">.modal-body</span></div>
+<div class="step successful">When I click <span class="step parameter">#forgotPasswordBtn</span></div>
+<div class="step successful">And I type <span class="step parameter">jens@gmail.com</span> in <span class="step parameter">#resetPasswordEmail</span></div>
+<div class="step successful">And I click <span class="step parameter">#resetModalBtn</span></div>
+<div class="step successful">And I close the modal</div>
+<div class="step successful">And I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">resetPassword123</span></div>
+<div class="step successful">Then the content <span class="step parameter">My Profile</span> is displayed inside <span class="step parameter">.navbar</span></div>
+</div>
+<div class="scenario">
+<h2>Scenario: Search for apartments</h2>
+<div class="step successful">Given the student apartments site is displayed in the browser</div>
+<div class="step successful">When I try logging in using <span class="step parameter">jens@gmail.com</span> and <span class="step parameter">jens123</span></div>
+<div class="step successful">And I click <span class="step parameter">#propertyForSaleBtn</span></div>
+<div class="step successful">Then there should be <span class="step parameter">9</span> visible properties</div>
+<div class="step successful">When I search for <span class="step parameter">odense</span></div>
+<div class="step successful">Then there should be <span class="step parameter">6</span> visible properties</div>
+<div class="step successful">When I search for <span class="step parameter">k&oslash;benhavn</span></div>
+<div class="step successful">Then there should be <span class="step parameter">3</span> visible properties</div>
+<div class="step successful">When I search for <span class="step parameter">the moon</span></div>
+<div class="step successful">Then there should be <span class="step parameter">0</span> visible properties</div>
+</div>
 <div class="afterStorySteps">
 </div>
 </div>

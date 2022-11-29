@@ -17,19 +17,32 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class MySteps extends Steps {
 	private String[] urls = new String[]{"http://localhost:3000/", "https://janiksunke.github.io/StudentApartment/"};
 	private String getSiteUrl(){
-		return urls[1];
+		return urls[0];
 	}
 
+	private static final boolean doSlowRunthrough = false;
+
 	private static WebDriver driver = null;
+	private static WebDriver getDriver(){
+		if(doSlowRunthrough) {
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				System.out.println("Interrupted sleep!");
+			}
+		}
+		return driver;
+	}
 	
 	@Given("the browser is open")
 	public void openBrowser () {
 		
-		if (driver == null) {
+		if (getDriver() == null) {
 			System.setProperty("webdriver.chrome.driver", "src/main/java/chromedriver_win32_107.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-extensions");
@@ -37,12 +50,25 @@ public class MySteps extends Steps {
 			driver.manage().window().maximize();
 		}
 		driver.manage().deleteAllCookies();
+
 	}
 
 	@Given("the student apartments site is displayed in the browser")
 	public void browseStudentApartments(){
 		openBrowser();
 		navigateToPage(getSiteUrl());
+		final String homeLink = "#basic-navbar-nav > div > a:nth-child(1)";
+
+		browserWaitForElement(homeLink);
+		clickOn(homeLink);
+
+		waitForFullLoad();
+	}
+
+	@Given("the admin is logged in")
+	public void adminLogin(){
+		attemptLogin("admin", "admin");
+		browserWaitForElement("#logoutBtn");
 	}
 
 	@Given("the page $site is displayed")
@@ -62,34 +88,62 @@ public class MySteps extends Steps {
 		waitForFullLoad();
 	}
 
+	@When("I close the modal")
+	public void closeModal(){
+		clickOn("div.modal-header > button");
+	}
+
 	@When("I type $content in $selector")
 	public void typeContent(String content, String selector){
 		browserWaitForElement(selector);
-		WebElement field = driver.findElement(By.cssSelector(selector));
-		System.out.println("Found element");
+		WebElement field = getDriver().findElement(By.cssSelector(selector));
 		browserWaitForElement(field);
-		System.out.println("Will click element");
 		field.click();
+		field.clear();
 		field.sendKeys(content);
+	}
+
+	@When("I try logging in using $username and $password")
+	public void attemptLogin(String username, String password){
+		clickOn("#loginBtn");
+		browserWaitForElement("#email");
+		typeContent(username, "#email");
+		typeContent(password, "#password");
+		clickOn("#loginModalBtn");
+	}
+
+	@When("I create a new account named $name with the credentials $username and $password")
+	public void createAccount(String name, String username, String password){
+		clickOn("#createAccountBtn");
+		browserWaitForElement("#createEmail");
+		typeContent(name, "#fullname");
+		typeContent(username, "#createEmail");
+		typeContent(password, "#createPassword");
+		clickOn("#terms"); //Accept terms of use
+		clickOn("#createAccountModalBtn");
+		browserWaitForElement("#createAccountBtn"); //Just makes sure the modal closes completely
 	}
 
 	@When("I click $selector")
 	public void clickOn(String selector){
-		WebElement searchField = driver.findElement(By.cssSelector(selector));
+		WebElement searchField = getDriver().findElement(By.cssSelector(selector));
 		browserWaitForElement(searchField);
 		searchField.click();
 		waitForFullLoad();
 	}
 
-	@When("I search for $query")
-	public void searchFor (String query) {
-		WebElement cookieOption = driver.findElement(By.xpath("//*[@id=\"W0wltc\"]/div"));
-		WebElement searchField = driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input"));
-		WebElement searchButton = driver.findElement(By.xpath("/html/body/div[1]/div[3]/form/div[1]/div[1]/div[2]/div[2]/div[5]/center/input[1]"));
-		cookieOption.click();
-		searchField.sendKeys(query);
-		searchField.sendKeys(" ");
-		searchButton.click();
+	@When("I sign the shown contract")
+	public void signContract(){
+		browserWaitForElement("#contractName");
+		typeContent("Jens Kristian", "#contractName");
+		clickOn("#signContractBtn");
+		waitForFullLoad();
+	}
+
+	@When("I search for $city")
+	public void searchForCity(String city){
+		browserWaitForElement("#searchForProperties");
+		typeContent(city, "#searchForProperties");
 	}
 
 	@Then("the URL should be $url")
@@ -99,11 +153,38 @@ public class MySteps extends Steps {
 
 	@Then("the content $content is displayed")
 	public void checkContent (String content) {
-		Assert.assertTrue("Page contain content?",driver.getPageSource().contains(content));
+		Assert.assertTrue("Page contain content?",getDriver().getPageSource().contains(content));
 	}
 
+	@Then("the content $content is not displayed")
+	public void checkNoContent (String content) {
+		Assert.assertFalse("Page contain content?",getDriver().getPageSource().contains(content));
+	}
 
-	private void browserWaitForElement(String selector){
+	@Then("the content $content is displayed inside $selector")
+	public void checkContent (String content, String selector) {
+		String sourceToCheck = driver.findElement(By.cssSelector(selector)).getAttribute("innerHTML");
+		Assert.assertTrue("Page contain content?",sourceToCheck.contains(content));
+	}
+
+	@Then("the content $content is not displayed inside $selector")
+	public void checkNoContent (String content, String selector) {
+		String sourceToCheck = driver.findElement(By.cssSelector(selector)).getAttribute("innerHTML");
+		Assert.assertFalse("Page does not contain content?",sourceToCheck.contains(content));
+	}
+
+	@Then("there should be $num visible properties")
+	public void checkNumApartments(int num){
+		WebElement propertiesContainer = getDriver().findElement(By.cssSelector("#propertiesContainer"));
+		browserWaitForElement(propertiesContainer);
+
+		List<WebElement> allProperties = propertiesContainer.findElements(By.cssSelector(".card"));
+
+		Assert.assertTrue("Expected number of properties",allProperties.size() == num);
+	}
+
+	@When("I wait for the $selector element to be visible")
+	public void browserWaitForElement(String selector){
 		new WebDriverWait(driver, Duration.of(30, ChronoUnit.SECONDS)).until(
 				ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
 	}

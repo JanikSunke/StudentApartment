@@ -21,22 +21,22 @@ export default function MyProfile() {
         <div>
             <Row>
                 <Col sm={3} style={{borderRight: "2px solid", height: "80vh"}}>
-                    <button className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: true, fav: false, contracts: false, settings: false})}>
+                    <button id="profileMessagesBtn" className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: true, fav: false, contracts: false, settings: false})}>
                         <FontAwesomeIcon className='mx-2' icon={faMessage}></FontAwesomeIcon>
                         Messages
                     </button>
                     <br></br>
-                    <button className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: false, fav: true, contracts: false, settings: false})}>
+                    <button id="profileFavoritesBtn" className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: false, fav: true, contracts: false, settings: false})}>
                         <FontAwesomeIcon className='mx-2' icon={faHeart}></FontAwesomeIcon>
                         Favorites
                     </button>
                     <br></br>
-                    <button className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: false, fav: false, contracts: true, settings: false})}>
+                    <button id="profileContractsBtn" className="m-2 border-0 bg-white" onClick={() => setProfile({default: false, message: false, fav: false, contracts: true, settings: false})}>
                         <FontAwesomeIcon className='mx-2' icon={faContactBook}></FontAwesomeIcon>
                         Contracts
                     </button>
                     <br></br>
-                    <button className='m-2 border-0 bg-white' onClick={() => setProfile({default: false, message: false, fav: false, contracts: false, settings: true})}>
+                    <button id="profileSettingsBtn" className='m-2 border-0 bg-white' onClick={() => setProfile({default: false, message: false, fav: false, contracts: false, settings: true})}>
                         <FontAwesomeIcon className='mx-2' icon={faGear}></FontAwesomeIcon>
                         Settings
                     </button>

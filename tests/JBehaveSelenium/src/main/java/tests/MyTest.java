@@ -37,6 +37,9 @@ public class MyTest extends JUnitStories {
 	
 	@Override
 	protected List<String> storyPaths() {
-		return Arrays.asList("stories/sample.story", "stories/studentapartment.story");
+		return Arrays.asList(
+//				"stories/sample.story",
+				"stories/studentapartment.story"
+		);
 	}
 }

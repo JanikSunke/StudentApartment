@@ -11,6 +11,7 @@ export default function FavoritePage() {
     return (
         <Container>
             <h1>Favorites</h1>
+            <div id="favoritesContainer">
             {list.map((item) => {
             return <Card className="m-2">
                 <Stack direction="horizontal">
@@ -19,10 +20,11 @@ export default function FavoritePage() {
                     <p>{item.name}</p>
                     {item.price}
                     </div>
-                    <Button onClick={() => setList(list.filter(filt => filt.name !== item.name))} variant="danger">X</Button>
+                    <Button className="deleteFavoriteApartmentBtn" onClick={() => setList(list.filter(filt => filt.name !== item.name))} variant="danger">X</Button>
                 </Stack>
             </Card>
             })}
+            </div>
         </Container>
     )
 }
